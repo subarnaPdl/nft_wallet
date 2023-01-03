@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:nft_wallet/home_screen/pages/home_page/home_page.dart';
+import 'package:nft_wallet/home_screen/pages/home_page/presentation/home_page.dart';
 import 'package:nft_wallet/home_screen/pages/market_page/market_page.dart';
 import 'package:nft_wallet/home_screen/pages/profile_page/profile_page.dart';
 import 'package:nft_wallet/home_screen/pages/wallet_page/wallet_page.dart';
 import 'package:nft_wallet/theme/uiparameters.dart';
+import 'package:nft_wallet/widgets/gradient_button.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -25,14 +25,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 0,
-        elevation: 0,
-        systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Theme.of(context).primaryColor,
-        ),
-      ),
-      resizeToAvoidBottomInset: false,
       body: PersistentTabView(
         context,
         controller: _persistentTabController,
@@ -78,7 +70,7 @@ class HomeScreen extends StatelessWidget {
       // Swap
       PersistentBottomNavBarItem(
         onPressed: (_) {},
-        icon: Image.asset('assets/images/swap.png'),
+        icon: const GradientButton(img: 'assets/images/swap.png'),
         title: 'Swap',
         activeColorPrimary: Theme.of(context).colorScheme.onPrimary,
         inactiveColorPrimary: Theme.of(context).colorScheme.onSecondary,
