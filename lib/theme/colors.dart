@@ -11,7 +11,6 @@ class AppColors {
   ThemeData themeData() {
     // TextTheme
     TextTheme txtTheme = ThemeData.dark().textTheme;
-    Color txtColor = white;
 
     // ColorScheme or ColorTheme
     ColorScheme colorScheme = ColorScheme(
@@ -22,11 +21,12 @@ class AppColors {
       secondaryContainer: accent2,
       background: accent1,
       surface: accent1,
-      onBackground: txtColor,
-      onSurface: txtColor,
+      onBackground: white,
+      onSurface: white,
       onError: Colors.white,
       onPrimary: Colors.white,
       onSecondary: Colors.grey,
+      tertiaryContainer: Colors.red, // Used for notificaiton
       error: Colors.red,
     );
 
