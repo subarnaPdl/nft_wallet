@@ -8,8 +8,8 @@ class MyAppBar extends StatelessWidget {
 
   const MyAppBar({
     Key? key,
-    this.showTitle = false,
     this.title = '',
+    this.showTitle = false,
     this.showAccount = true,
   }) : super(key: key);
 
@@ -42,9 +42,12 @@ class MyAppBar extends StatelessWidget {
   }
 
   Widget headTitle(String title) {
-    return Text(
-      title,
-      style: const TextStyle(fontSize: 20),
+    return Padding(
+      padding: const EdgeInsets.only(left: 18),
+      child: Text(
+        title,
+        style: const TextStyle(fontSize: 24),
+      ),
     );
   }
 

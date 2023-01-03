@@ -64,11 +64,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ),
           ),
         ),
+
+        // Scrollable Data View for Tokens and NFTs tab
         Expanded(
           flex: 3,
           child: SingleChildScrollView(
               child: tabIndex == 0 ? tokensData(context) : nftsData(context)),
         ),
+
+        // Additional space for bottom nabbar
+        const SizedBox(height: 28),
       ],
     );
   }
@@ -213,7 +218,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         return MyListTile(
           leadingImg: 'assets/images/stocks/${val.img}',
           title: val.shortForm,
-          subTitle: val.shortForm,
+          subTitle: val.fullForm,
           hasSpline: true,
           isProfit: val.isProfit,
           trailingTitleWidget: Text('\$${formatNum.format(val.value)}'),

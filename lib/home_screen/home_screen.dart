@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nft_wallet/home_screen/pages/home_page/presentation/home_page.dart';
-import 'package:nft_wallet/home_screen/pages/market_page/market_page.dart';
+import 'package:nft_wallet/home_screen/pages/market_page/presentation/market_page.dart';
 import 'package:nft_wallet/home_screen/pages/profile_page/profile_page.dart';
 import 'package:nft_wallet/home_screen/pages/wallet_page/wallet_page.dart';
 import 'package:nft_wallet/theme/uiparameters.dart';
