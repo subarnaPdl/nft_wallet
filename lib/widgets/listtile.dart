@@ -1,36 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:nft_wallet/home_screen/pages/home_page/domain/chart_data_model.dart';
 import 'package:nft_wallet/home_screen/pages/home_page/domain/data.dart';
-import 'package:nft_wallet/home_screen/pages/home_page/domain/token_model.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-// ignore: depend_on_referenced_packages
-import 'package:intl/intl.dart';
 
 class MyListTile extends StatelessWidget {
-  MyListTile({
+  const MyListTile({
     Key? key,
     required this.leadingImg,
     required this.title,
     required this.subTitle,
-    required this.trailingTitle,
-    required this.trailingSubtitle,
+    required this.trailingTitleWidget,
+    required this.trailingSubtitleWidget,
     required this.hasSpline,
     required this.isProfit,
   }) : super(key: key);
 
-  // final Token token;
-
   final String leadingImg;
   final String title;
   final String subTitle;
-  final double trailingTitle;
-  final double trailingSubtitle;
+  final Widget trailingTitleWidget;
+  final Widget trailingSubtitleWidget;
   final bool hasSpline;
   final bool isProfit;
-
-  // Format integers
-  // 1000 => 1,000
-  final NumberFormat formatNum = NumberFormat.decimalPattern('en_us');
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +31,7 @@ class MyListTile extends StatelessWidget {
         children: [
           // Leading
           Image.asset(
-            'assets/images/stocks/$leadingImg',
+            leadingImg,
             height: 56,
             width: 56,
           ),
@@ -100,15 +91,9 @@ class MyListTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('\$${formatNum.format(trailingTitle)}'),
+              trailingTitleWidget,
               const SizedBox(height: 5),
-              Text(
-                '${isProfit ? '+' : '-'}$trailingSubtitle%',
-                style: TextStyle(
-                    color: isProfit
-                        ? Theme.of(context).colorScheme.tertiary
-                        : Theme.of(context).colorScheme.tertiaryContainer),
-              ),
+              trailingSubtitleWidget,
             ],
           ),
         ],

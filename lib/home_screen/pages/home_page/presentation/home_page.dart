@@ -1,12 +1,16 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:tab_indicator_styler/tab_indicator_styler.dart';
+
 import 'package:nft_wallet/home_screen/pages/home_page/domain/data.dart';
 import 'package:nft_wallet/theme/uiparameters.dart';
 import 'package:nft_wallet/widgets/appbar.dart';
 import 'package:nft_wallet/widgets/gradient_button.dart';
 import 'package:nft_wallet/widgets/listtile.dart';
-import 'package:tab_indicator_styler/tab_indicator_styler.dart';
+
+// ignore: depend_on_referenced_packages
+import 'package:intl/intl.dart' show NumberFormat;
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,6 +31,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       vsync: this,
     );
   }
+
+  // Format integers
+  // 1000 => 1,000
+  final NumberFormat formatNum = NumberFormat.decimalPattern('en_us');
 
   @override
   Widget build(BuildContext context) {
@@ -203,13 +211,20 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       itemBuilder: (BuildContext context, int index) {
         final val = tokensList[index];
         return MyListTile(
-            leadingImg: val.img,
-            title: val.shortForm,
-            subTitle: val.shortForm,
-            trailingTitle: val.value,
-            trailingSubtitle: val.changeRate,
-            hasSpline: true,
-            isProfit: val.isProfit);
+          leadingImg: 'assets/images/stocks/${val.img}',
+          title: val.shortForm,
+          subTitle: val.shortForm,
+          hasSpline: true,
+          isProfit: val.isProfit,
+          trailingTitleWidget: Text('\$${formatNum.format(val.value)}'),
+          trailingSubtitleWidget: Text(
+            '${val.isProfit ? '+' : '-'}${val.changeRate}%',
+            style: TextStyle(
+                color: val.isProfit
+                    ? Theme.of(context).colorScheme.tertiary
+                    : Theme.of(context).colorScheme.tertiaryContainer),
+          ),
+        );
       },
     );
   }
@@ -218,19 +233,42 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return ListView.separated(
       shrinkWrap: true,
       padding: EdgeInsets.zero,
-      itemCount: tokensList.length,
+      itemCount: nftsList.length,
       physics: const NeverScrollableScrollPhysics(),
       separatorBuilder: (BuildContext context, int index) => const Divider(),
       itemBuilder: (BuildContext context, int index) {
-        final val = tokensList[index];
+        final val = nftsList[index];
         return MyListTile(
-            leadingImg: val.img,
-            title: val.shortForm,
-            subTitle: val.shortForm,
-            trailingTitle: val.value,
-            trailingSubtitle: val.changeRate,
-            hasSpline: false,
-            isProfit: val.isProfit);
+          leadingImg: 'assets/images/avatar/${val.img}',
+          title: '#${val.id}',
+          subTitle: val.club,
+          hasSpline: false,
+          isProfit: val.isProfit,
+          trailingTitleWidget: Row(
+            children: [
+              Image.asset(
+                'assets/images/ethereum_icon.png',
+                height: 10,
+              ),
+              Text(formatNum.format(val.value)),
+            ],
+          ),
+          trailingSubtitleWidget: Row(
+            children: [
+              Icon(
+                Icons.arrow_drop_up_rounded,
+                color: Theme.of(context).colorScheme.tertiary,
+              ),
+              Text(
+                '\$${val.changeRate}',
+                style: TextStyle(
+                    color: val.isProfit
+                        ? Theme.of(context).colorScheme.tertiary
+                        : Theme.of(context).colorScheme.tertiaryContainer),
+              ),
+            ],
+          ),
+        );
       },
     );
   }
