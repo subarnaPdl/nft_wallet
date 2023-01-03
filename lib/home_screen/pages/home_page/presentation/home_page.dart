@@ -17,6 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late TabController _tabController;
+  int tabIndex = 0;
   @override
   void initState() {
     super.initState();
@@ -57,7 +58,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ),
         Expanded(
           flex: 3,
-          child: SingleChildScrollView(child: tokensData(context)),
+          child: SingleChildScrollView(
+              child: tabIndex == 0 ? tokensData(context) : nftsData(context)),
         ),
       ],
     );
@@ -167,6 +169,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ),
         child: TabBar(
           controller: _tabController,
+          onTap: (value) {
+            setState(() {
+              tabIndex = value;
+            });
+          },
           splashBorderRadius: BorderRadius.circular(100),
           tabs: const [
             Tab(text: "Tokens"),
@@ -190,11 +197,40 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return ListView.separated(
       shrinkWrap: true,
       padding: EdgeInsets.zero,
-      itemCount: tokens.length,
+      itemCount: tokensList.length,
       physics: const NeverScrollableScrollPhysics(),
       separatorBuilder: (BuildContext context, int index) => const Divider(),
       itemBuilder: (BuildContext context, int index) {
-        return MyListTile(index: index);
+        final val = tokensList[index];
+        return MyListTile(
+            leadingImg: val.img,
+            title: val.shortForm,
+            subTitle: val.shortForm,
+            trailingTitle: val.value,
+            trailingSubtitle: val.changeRate,
+            hasSpline: true,
+            isProfit: val.isProfit);
+      },
+    );
+  }
+
+  Widget nftsData(BuildContext context) {
+    return ListView.separated(
+      shrinkWrap: true,
+      padding: EdgeInsets.zero,
+      itemCount: tokensList.length,
+      physics: const NeverScrollableScrollPhysics(),
+      separatorBuilder: (BuildContext context, int index) => const Divider(),
+      itemBuilder: (BuildContext context, int index) {
+        final val = tokensList[index];
+        return MyListTile(
+            leadingImg: val.img,
+            title: val.shortForm,
+            subTitle: val.shortForm,
+            trailingTitle: val.value,
+            trailingSubtitle: val.changeRate,
+            hasSpline: false,
+            isProfit: val.isProfit);
       },
     );
   }

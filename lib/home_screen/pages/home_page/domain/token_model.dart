@@ -5,7 +5,7 @@ class Token {
   final String img;
   final double value;
   final double changeRate;
-  final bool isIncreased;
+  final bool isProfit;
   Token({
     required this.id,
     required this.shortForm,
@@ -13,6 +13,6 @@ class Token {
     required this.img,
     required this.value,
     required this.changeRate,
-    required this.isIncreased,
+    required this.isProfit,
   });
 }

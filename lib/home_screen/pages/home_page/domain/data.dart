@@ -1,7 +1,7 @@
 import 'package:nft_wallet/home_screen/pages/home_page/domain/chart_data_model.dart';
 import 'package:nft_wallet/home_screen/pages/home_page/domain/token_model.dart';
 
-List<Token> tokens = [
+List<Token> tokensList = [
   Token(
     id: 0,
     shortForm: 'BTC',
@@ -9,7 +9,7 @@ List<Token> tokens = [
     img: 'bitcoin.png',
     value: 36590.00,
     changeRate: 6.21,
-    isIncreased: true,
+    isProfit: true,
   ),
   Token(
     id: 1,
@@ -18,7 +18,7 @@ List<Token> tokens = [
     img: 'ethereum.png',
     value: 2950.00,
     changeRate: 5.21,
-    isIncreased: false,
+    isProfit: false,
   ),
   Token(
     id: 2,
@@ -27,7 +27,7 @@ List<Token> tokens = [
     img: 'solona.png',
     value: 390.00,
     changeRate: 2.21,
-    isIncreased: false,
+    isProfit: false,
   ),
 ];
 
