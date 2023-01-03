@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:nft_wallet/home_screen/pages/home_page/domain/chart_data_model.dart';
 import 'package:nft_wallet/home_screen/pages/home_page/domain/data.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+// ignore: depend_on_referenced_packages
+import 'package:intl/intl.dart';
 
 class MyListTile extends StatelessWidget {
-  const MyListTile({
+  MyListTile({
     Key? key,
     required this.index,
   }) : super(key: key);
 
   final int index;
+
+  // Format integers
+  // 1000 => 1,000
+  final NumberFormat formatNum = NumberFormat.decimalPattern('en_us');
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +25,7 @@ class MyListTile extends StatelessWidget {
         children: [
           // Leading
           Image.asset(
-            'assets/images/stocks/${tokens[index]['img']}',
+            'assets/images/stocks/${tokens[index].img}',
             height: 56,
             width: 56,
           ),
@@ -32,14 +38,14 @@ class MyListTile extends StatelessWidget {
             children: [
               // Title
               Text(
-                tokens[index]['shortForm'],
+                tokens[index].shortForm,
                 style: const TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 2),
 
               // Subtitle
               Text(
-                tokens[index]['fullForm'],
+                tokens[index].fullForm,
                 style: TextStyle(
                     fontSize: 14,
                     color: Theme.of(context).colorScheme.onSecondary),
@@ -60,7 +66,7 @@ class MyListTile extends StatelessWidget {
                 series: <ChartSeries<ChartData, String>>[
                   LineSeries(
                     dataSource: data,
-                    pointColorMapper: (_, __) => tokens[index]['isIncreased']
+                    pointColorMapper: (_, __) => tokens[index].isIncreased
                         ? Theme.of(context).colorScheme.tertiary
                         : Theme.of(context).colorScheme.tertiaryContainer,
                     xValueMapper: (ChartData data, _) => data.year.toString(),
@@ -76,12 +82,12 @@ class MyListTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(tokens[index]['value']),
+              Text('\$${formatNum.format(tokens[index].value)}'),
               const SizedBox(height: 5),
               Text(
-                '${tokens[index]['isIncreased'] ? '+' : '-'}${tokens[index]['changeRate']}',
+                '${tokens[index].isIncreased ? '+' : '-'}${tokens[index].changeRate}%',
                 style: TextStyle(
-                    color: tokens[index]['isIncreased']
+                    color: tokens[index].isIncreased
                         ? Theme.of(context).colorScheme.tertiary
                         : Theme.of(context).colorScheme.tertiaryContainer),
               ),

@@ -1,31 +1,35 @@
 import 'package:nft_wallet/home_screen/pages/home_page/domain/chart_data_model.dart';
+import 'package:nft_wallet/home_screen/pages/home_page/domain/token_model.dart';
 
-Map tokens = {
-  0: {
-    'shortForm': 'BTC',
-    'fullForm': 'Bitcoin',
-    'img': 'bitcoin.png',
-    'value': '\$36,590.00',
-    'changeRate': '6.21%',
-    'isIncreased': true,
-  },
-  1: {
-    'shortForm': 'ETH',
-    'fullForm': 'Ethereum',
-    'img': 'ethereum.png',
-    'value': '\$2,950.00',
-    'changeRate': '5.21%',
-    'isIncreased': false,
-  },
-  2: {
-    'shortForm': 'SOL',
-    'fullForm': 'Solona',
-    'img': 'solona.png',
-    'value': '\$390.00',
-    'changeRate': '2.21%',
-    'isIncreased': false,
-  },
-};
+List<Token> tokens = [
+  Token(
+    id: 0,
+    shortForm: 'BTC',
+    fullForm: 'Bitcoin',
+    img: 'bitcoin.png',
+    value: 36590.00,
+    changeRate: 6.21,
+    isIncreased: true,
+  ),
+  Token(
+    id: 1,
+    shortForm: 'ETH',
+    fullForm: 'Ethereum',
+    img: 'ethereum.png',
+    value: 2950.00,
+    changeRate: 5.21,
+    isIncreased: false,
+  ),
+  Token(
+    id: 2,
+    shortForm: 'SOL',
+    fullForm: 'Solona',
+    img: 'solona.png',
+    value: 390.00,
+    changeRate: 2.21,
+    isIncreased: false,
+  ),
+];
 
 List<ChartData> data = [
   ChartData(10, 2018),
