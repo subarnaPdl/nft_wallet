@@ -46,6 +46,16 @@ class HomeScreen extends StatelessWidget {
         ),
         items: _items(context),
       ),
+
+      // Centered Swap Button
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: const Padding(
+        padding: EdgeInsets.only(bottom: 28),
+        child: GradientButton(
+          img: 'assets/images/swap.png',
+          size: 70,
+        ),
+      ),
     );
   }
 
@@ -70,10 +80,11 @@ class HomeScreen extends StatelessWidget {
       // Swap
       PersistentBottomNavBarItem(
         onPressed: (_) {},
-        icon: const GradientButton(img: 'assets/images/swap.png'),
+        icon: Container(),
         title: 'Swap',
-        activeColorPrimary: Theme.of(context).colorScheme.onPrimary,
+        activeColorPrimary: Colors.transparent,
         inactiveColorPrimary: Theme.of(context).colorScheme.onSecondary,
+        //
       ),
 
       // MarketPage

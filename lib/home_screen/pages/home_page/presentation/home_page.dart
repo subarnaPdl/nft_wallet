@@ -159,7 +159,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
         // Buy
         item(
-          img: const GradientButton(img: 'assets/images/add.png'),
+          img: const GradientButton(
+            img: 'assets/images/add.png',
+            size: null,
+          ),
           label: 'Buy',
         ),
 
