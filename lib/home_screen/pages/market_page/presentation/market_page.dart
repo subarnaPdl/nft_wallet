@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:nft_wallet/home_screen/pages/market_page/domain/market_data.dart';
+import 'package:nft_wallet/theme/colors.dart';
 import 'package:nft_wallet/theme/uiparameters.dart';
 import 'package:nft_wallet/widgets/appbar.dart';
 
@@ -87,9 +88,49 @@ class MarketPage extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Image.asset(
-                  'assets/images/avatar/${marketData[index].img}',
-                  fit: BoxFit.fill,
+                Stack(
+                  children: [
+                    Image.asset(
+                      'assets/images/avatar/${marketData[index].img}',
+                      fit: BoxFit.fill,
+                    ),
+
+                    // Reacts
+                    Positioned(
+                        top: 5,
+                        right: 5,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSecondary
+                                .withOpacity(0.5),
+                          ),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 5),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.favorite_border_rounded,
+                                  size: 12,
+                                  color: AppColors().black,
+                                ),
+                                const SizedBox(width: 2),
+                                Text(
+                                  marketData[index].reacts.toString(),
+                                  style: TextStyle(
+                                    color: AppColors().black,
+                                    fontSize: 12,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ))
+                  ],
                 ),
                 Padding(
                   padding: const EdgeInsets.all(10),
