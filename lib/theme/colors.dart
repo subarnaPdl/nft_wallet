@@ -5,6 +5,7 @@ class AppColors {
   final Color accent1 = const Color(0xFF0f111e);
   final Color accent2 = const Color(0xFF161b2a);
   final Color white = Colors.white;
+  final Color grey = const Color(0xFF999999);
   final Color black = const Color(0xFF1E1B18);
 
   ThemeData themeData() {
@@ -25,7 +26,7 @@ class AppColors {
       onSurface: txtColor,
       onError: Colors.white,
       onPrimary: Colors.white,
-      onSecondary: Colors.white,
+      onSecondary: Colors.grey,
       error: Colors.red,
     );
 
