@@ -6,6 +6,7 @@ class MyAppBar extends StatelessWidget {
   final String title;
   final bool showAccount;
 
+  //  By default, we set title hidden and account icon to true
   const MyAppBar({
     Key? key,
     this.title = '',
