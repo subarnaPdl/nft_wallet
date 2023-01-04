@@ -55,6 +55,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 const MyAppBar(),
                 const Spacer(),
                 currentWalletBalance(context),
+                btcValue(context),
+                const Spacer(),
                 const Spacer(),
                 balanceOptions(context),
                 const Spacer(),
@@ -101,35 +103,36 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ],
         ),
         const SizedBox(height: 10),
-
-        // BTC Value
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Theme.of(context).colorScheme.onSecondary.withOpacity(0.1),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text('BTC : 0.00335'),
-                const SizedBox(width: 5),
-                Icon(
-                  Icons.arrow_drop_up_rounded,
-                  color: Theme.of(context).colorScheme.tertiary,
-                ),
-                Text(
-                  '+6.54%',
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.tertiary,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
       ],
+    );
+  }
+
+  Widget btcValue(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Theme.of(context).colorScheme.onSecondary.withOpacity(0.1),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('BTC : 0.00335'),
+            const SizedBox(width: 5),
+            Icon(
+              Icons.arrow_drop_up_rounded,
+              color: Theme.of(context).colorScheme.tertiary,
+            ),
+            Text(
+              '+6.54%',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.tertiary,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 

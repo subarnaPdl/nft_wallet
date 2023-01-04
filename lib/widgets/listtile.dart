@@ -30,15 +30,10 @@ class MyListTile extends StatelessWidget {
       child: Row(
         children: [
           // Leading
-          Image.asset(
-            leadingImg,
-            height: 56,
-            width: 56,
-          ),
-
+          Image.asset(leadingImg, height: 56, width: 56),
           const SizedBox(width: 10),
 
-          //
+          // Body
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -60,6 +55,7 @@ class MyListTile extends StatelessWidget {
           ),
 
           // Chart
+          // Show chart only in tokens tab
           !hasSpline
               ? const Spacer()
               : Expanded(

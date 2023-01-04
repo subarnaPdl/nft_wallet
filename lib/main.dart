@@ -12,6 +12,11 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
   ]);
 
+  // Make status bar transparent throughout the app
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+  );
+
   runApp(const MyApp());
 }
 

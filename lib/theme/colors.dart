@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppColors {
   /// Common
@@ -12,7 +13,8 @@ class AppColors {
 
   ThemeData themeData() {
     // TextTheme
-    TextTheme txtTheme = ThemeData.dark().textTheme;
+    TextTheme txtTheme =
+        GoogleFonts.nunitoTextTheme(ThemeData.dark().textTheme);
 
     // ColorScheme or ColorTheme
     ColorScheme colorScheme = ColorScheme(

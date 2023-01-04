@@ -90,6 +90,7 @@ class MarketPage extends StatelessWidget {
               children: [
                 Stack(
                   children: [
+                    // Image
                     Image.asset(
                       'assets/images/avatar/${marketData[index].img}',
                       fit: BoxFit.fill,
@@ -132,6 +133,8 @@ class MarketPage extends StatelessWidget {
                         ))
                   ],
                 ),
+
+                // Description
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: Column(
